@@ -23,7 +23,7 @@ def create_map(code: str) -> Dict[int, int]:
     return bracket_map
 
 
-def run(code: str, mem_size: int = 30000):
+def run(code: str, mem_size: int = 30000) -> str:
     """Executes code
 
     memory: program RAM
@@ -48,7 +48,9 @@ def run(code: str, mem_size: int = 30000):
         elif command == '<':
             data_ptr = (data_ptr - 1) % mem_size  # cyclic memory
         elif command == '.':
-            output += chr(memory[data_ptr])
+            char = chr(memory[data_ptr])
+            output += char
+            print(char, end='')
         elif command == ',':
             inp = input()
             memory[data_ptr] = ord(inp[0]) if inp else 0
